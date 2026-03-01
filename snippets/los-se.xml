@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote name="los-se"
+          fetch="https://github.com/LineageOS-SE/"
+          sync-c="true"
+          sync-j="8"
+          revision="refs/heads/lineage-23.2"
+          review="review.lineageos.org" />
+
+
+  <!-- Android Manifest  -->
+  <project path="android" name="android" remote="los-se" />
+
+  <!-- Build  -->
+  <project path="build/soong" name="android_build_soong" groups="pdk,tradefed,sysui-studio" remote="los-se" >
+    <linkfile dest="Android.bp" src="root.bp" />
+    <linkfile dest="bootstrap.bash" src="bootstrap.bash" />
+  </project>
+
+  <!-- Frameworks  -->
+  <project path="frameworks/av" name="android_frameworks_av" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="los-se" />
+  <project path="frameworks/base" name="android_frameworks_base" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="los-se" />
+
+  <!-- Packages  -->
+  <project path="packages/apps/Launcher3" name="android_packages_apps_Launcher3" groups="pdk-fs,sysui-studio,pdk-cw-tvc" remote="los-se" />
+  <project path="packages/apps/Settings" name="android_packages_apps_Settings" groups="pdk-fs,pdk-cw-tvc,sysui-studio" remote="los-se" />
+  <project path="packages/overlays/Lineage" name="android_packages_overlays_Lineage" remote="los-se" />
+
+  <!-- Vendor  -->
+  <project path="vendor/addons" name="android_vendor_addons" remote="los-se" />
+  <project path="vendor/lineage" name="android_vendor_lineage" remote="los-se" />
+  <project path="vendor/google/gms" name="los-se/vendor_google_gms" remote="gitlab" />
+  <project path="vendor/google/pixel" name="los-se/vendor_google_pixel" remote="gitlab" />
+</manifest>
